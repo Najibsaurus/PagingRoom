@@ -4,10 +4,12 @@ import android.app.Application;
 import android.arch.paging.DataSource;
 import android.os.AsyncTask;
 
-public class MoviesRepository {
+public class MoviesRepository  {
     private MoviesDao moviesDao;
 
     private DataSource.Factory<Integer, Movies> mAllMovies;
+
+
 
     public MoviesRepository(Application application) {
         MovieRoomDatabase db = MovieRoomDatabase.getDabase(application);
@@ -36,7 +38,6 @@ public class MoviesRepository {
             return null;
         }
     }
-
 
 
     private static class insertAsyncTask extends AsyncTask<Movies, Void, Void> {

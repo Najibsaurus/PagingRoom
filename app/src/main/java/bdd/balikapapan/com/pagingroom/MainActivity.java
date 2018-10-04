@@ -29,11 +29,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        for (int i = 0; i< 1; i++){
-            Movies word = new Movies(""+i);
-            moviesViewModel.insert(word);
-        }
-
-
     }
 }

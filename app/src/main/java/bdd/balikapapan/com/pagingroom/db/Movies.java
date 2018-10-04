@@ -16,15 +16,20 @@ public class Movies {
 
     @NonNull
     @ColumnInfo(name = "title")
-
-    private String mTitle;
+    private String title;
 
     @Ignore
-    public Movies(@NonNull String mTitle){this.mTitle = mTitle;}
+    public Movies(@NonNull String mTitle){this.title = mTitle;}
 
-    public Movies(int id, @NonNull String mTitle) {
+    public Movies() {
+    }
+
+    public void setId(int id) {
         this.id = id;
-        this.mTitle = mTitle;
+    }
+
+    public void setTitle(@NonNull String title) {
+        this.title = title;
     }
 
     public int getId() {
@@ -33,7 +38,7 @@ public class Movies {
 
     @NonNull
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 
 }
