@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recyclerview);
-        final MoviesAdapter adapter = new MoviesAdapter();
+        final MoviesAdapter adapter = new MoviesAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel.class);
         moviesViewModel.getAllMovies().observe(this, movies -> {

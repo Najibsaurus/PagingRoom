@@ -1,6 +1,7 @@
 package bdd.balikapapan.com.pagingroom;
 
 import android.arch.paging.PagedListAdapter;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
@@ -8,15 +9,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import bdd.balikapapan.com.pagingroom.db.Movies;
 
 public class MoviesAdapter extends PagedListAdapter<Movies, MoviesAdapter.MoviesViewHolder> {
 
-
-    public MoviesAdapter() {
+    private Context context;
+    public MoviesAdapter(Context context) {
         super(DIFF_CALLBACK);
+        this.context = context;
+
     }
 
 
@@ -47,6 +53,8 @@ public class MoviesAdapter extends PagedListAdapter<Movies, MoviesAdapter.Movies
         Movies pos = getItem(i);
         if (pos != null){
             moviesViewHolder.titleItemView.setText(pos.getTitle());
+            Glide.with(context).load(BuildConfig.BASE_URL_IMG+pos.getPoster_path()).into(moviesViewHolder.imagePoster);
+
         } else {
             moviesViewHolder.titleItemView.clearComposingText();
         }
@@ -54,12 +62,15 @@ public class MoviesAdapter extends PagedListAdapter<Movies, MoviesAdapter.Movies
     }
 
 
-     class MoviesViewHolder extends RecyclerView.ViewHolder {
+    class MoviesViewHolder extends RecyclerView.ViewHolder {
         private final TextView titleItemView;
+        private final ImageView imagePoster;
 
         private MoviesViewHolder(View itemView) {
             super(itemView);
             titleItemView = itemView.findViewById(R.id.title);
+            imagePoster = itemView.findViewById(R.id.imagePoster);
+
         }
     }
 }
