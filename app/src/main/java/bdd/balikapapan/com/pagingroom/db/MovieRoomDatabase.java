@@ -20,8 +20,6 @@ public abstract class MovieRoomDatabase extends RoomDatabase {
                 }
             }
         }
-
-
         return INSTANCE;
     }
 }
