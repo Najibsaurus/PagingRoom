@@ -3,13 +3,15 @@ package bdd.balikapapan.com.pagingroom.db;
 import android.app.Application;
 import android.arch.paging.DataSource;
 import android.os.AsyncTask;
+import android.util.Log;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MoviesRepository  {
     private MoviesDao moviesDao;
 
     private DataSource.Factory<Integer, Movies> mAllMovies;
-
-
 
     public MoviesRepository(Application application) {
         MovieRoomDatabase db = MovieRoomDatabase.getDabase(application);
@@ -17,9 +19,13 @@ public class MoviesRepository  {
         mAllMovies = moviesDao.getAllMovies();
     }
 
+
+    public MoviesDao getMoviesDao() {
+        return moviesDao;
+    }
     public DataSource.Factory<Integer,Movies> getAllMovies() {return  mAllMovies;}
 
-    public void insert(Movies movies) {
+    public void insert(List<Movies> movies) {
         new insertAsyncTask(moviesDao).execute(movies);
     }
     public void deleteAll(){
@@ -40,18 +46,18 @@ public class MoviesRepository  {
     }
 
 
-    private static class insertAsyncTask extends AsyncTask<Movies, Void, Void> {
+    private static class insertAsyncTask extends AsyncTask<List<Movies>,Void, Void> {
 
         private MoviesDao mAsyncTaskDao;
-
         insertAsyncTask(MoviesDao dao) {
             mAsyncTaskDao = dao;
         }
 
         @Override
-        protected Void doInBackground(final Movies... params) {
-            mAsyncTaskDao.insert(params[0]);
+        protected Void doInBackground(List<Movies>... lists) {
+            mAsyncTaskDao.insert(lists[0]);
             return null;
         }
     }
+
 }

@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         final MoviesAdapter adapter = new MoviesAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel.class);
-        moviesViewModel.delete();
         moviesViewModel.getAllMovies().observe(this, movies -> {
             recyclerView.setAdapter(adapter);
             adapter.submitList(movies);
