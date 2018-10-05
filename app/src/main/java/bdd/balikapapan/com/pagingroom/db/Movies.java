@@ -18,8 +18,11 @@ public class Movies {
     @ColumnInfo(name = "title")
     private String title;
 
+    @ColumnInfo(name = "poster_path")
+    private String poster_path;
+
     @Ignore
-    public Movies(@NonNull String mTitle){this.title = mTitle;}
+    public Movies(@NonNull String mTitle, String mPosterPath){this.title = mTitle; this.poster_path = mPosterPath;}
 
     public Movies() {
     }
@@ -41,4 +44,11 @@ public class Movies {
         return title;
     }
 
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
 }

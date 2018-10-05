@@ -11,7 +11,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_KEY", "\"bf0ebd09cf720d3516aee637026b6ef3\""
         buildConfigField "String", "BASE_URL", "\"http://api.themoviedb.org/3/\""
-        buildConfigField "String", "BASE_URL_IMG", "\"http://image.tmdb.org/t/p/\""
+        buildConfigField "String", "BASE_URL_IMG", "\"http://image.tmdb.org/t/p/w200\""
     }
     buildTypes {
         release {
@@ -48,6 +48,11 @@ dependencies {
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+    //glide
+    implementation "com.github.bumptech.glide:glide:4.8.0"
+
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
